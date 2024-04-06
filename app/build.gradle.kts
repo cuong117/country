@@ -18,6 +18,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"${project.property("base_url")}\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -33,6 +36,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -45,6 +52,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.coroutines)
     implementation(libs.koin)
+    implementation(libs.logging.interceptor)
+    implementation(libs.converter.gson)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
