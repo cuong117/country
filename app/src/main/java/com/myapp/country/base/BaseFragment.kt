@@ -22,4 +22,14 @@ abstract class BaseFragment<VB: ViewBinding, ViewModel: BaseViewModel>: Fragment
         viewBinding = inflateViewBinding(layoutInflater)
         return viewBinding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        registerLiveData()
+    }
+
+    protected open fun initView() {}
+
+    protected open fun registerLiveData() {}
 }

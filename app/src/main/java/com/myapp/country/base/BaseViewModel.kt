@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 abstract class BaseViewModel : ViewModel() {
 
     protected fun <T> launchTaskAsync(
-        onRequest: CoroutineScope.() -> DataResult<T>,
+        onRequest: suspend CoroutineScope.() -> DataResult<T>,
         onSuccess: (T) -> Unit,
         onError: ((Exception) -> Unit)? = null
     ) {

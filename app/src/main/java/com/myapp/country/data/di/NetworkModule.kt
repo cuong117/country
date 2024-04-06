@@ -1,7 +1,7 @@
 package com.myapp.country.data.di
 
 import com.myapp.country.BuildConfig
-import com.myapp.country.data.api.CountryService
+import com.myapp.country.data.dataScource.remote.api.CountryService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
