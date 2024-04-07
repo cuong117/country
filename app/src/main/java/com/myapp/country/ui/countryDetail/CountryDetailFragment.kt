@@ -7,6 +7,7 @@ import com.myapp.country.base.BaseFragment
 import com.myapp.country.base.EmptyViewModel
 import com.myapp.country.databinding.CountryDetailFragmentBinding
 import com.myapp.country.domain.entities.Country
+import com.myapp.country.ui.MainActivity
 import com.myapp.country.ui.countryDetail.adapter.CountryNameAdapter
 import com.myapp.country.utils.showImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -40,6 +41,12 @@ class CountryDetailFragment : BaseFragment<CountryDetailFragmentBinding, EmptyVi
                 activity?.supportFragmentManager?.popBackStack()
             }
         }
+        (activity as? MainActivity)?.supportActionBar?.hide()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        (activity as? MainActivity)?.supportActionBar?.show()
     }
 
     companion object {
