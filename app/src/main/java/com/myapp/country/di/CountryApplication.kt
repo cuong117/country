@@ -5,6 +5,7 @@ import com.myapp.country.data.di.dataSourceModule
 import com.myapp.country.data.di.netWorkModule
 import com.myapp.country.data.di.repositoryModule
 import com.myapp.country.domain.di.useCaseModule
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class CountryApplication : Application() {
@@ -17,6 +18,9 @@ class CountryApplication : Application() {
             useCaseModule,
             viewModelModule
         )
-        startKoin { modules(modules) }
+        startKoin {
+            androidContext(this@CountryApplication)
+            modules(modules)
+        }
     }
 }

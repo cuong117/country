@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.Country" parent="Base.Theme.Country" />
+
+    <style name="Theme.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/earth</item>
+        <item name="postSplashScreenTheme">@style/Theme.Country</item>
+    </style>
 </resources>

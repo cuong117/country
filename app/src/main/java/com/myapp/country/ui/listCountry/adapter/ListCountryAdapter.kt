@@ -43,17 +43,17 @@ class ListCountryAdapter :
         override fun onBindData(data: Country) {
             super.onBindData(data)
             viewBinding.countryImage.showImage(
-                url = data.flags.imageSVG ?: "",
-                alternativeUrl = data.flags.imagePNG ?: ""
+                url = data.flags?.imageSVG ?: "",
+                alternativeUrl = data.flags?.imagePNG ?: ""
             )
-            viewBinding.countryNameTextView.text = data.name.official
+            viewBinding.countryNameTextView.text = data.name?.official
         }
     }
 
     companion object {
         private val diffCallback = object : DiffUtil.ItemCallback<Country>() {
             override fun areItemsTheSame(oldItem: Country, newItem: Country): Boolean {
-                return oldItem.name.official == newItem.name.official
+                return oldItem.name?.official == newItem.name?.official
             }
 
             override fun areContentsTheSame(oldItem: Country, newItem: Country): Boolean {

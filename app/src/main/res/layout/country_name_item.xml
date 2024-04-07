@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:elevation="@dimen/dp_8"
         android:text="ccccccc"
-        android:textColor="#959292"
+        android:textColor="@color/colorSubText"
         android:textSize="@dimen/sp_12"
         app:layout_constraintTop_toBottomOf="@id/officialName"
         app:layout_constraintStart_toStartOf="@id/officialName"

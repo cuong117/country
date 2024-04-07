@@ -14,6 +14,7 @@ import com.myapp.country.domain.entities.Country
 import com.myapp.country.ui.MainActivity
 import com.myapp.country.ui.countryDetail.CountryDetailFragment
 import com.myapp.country.ui.listCountry.adapter.ListCountryAdapter
+import com.myapp.country.utils.NetworkUtils
 import com.myapp.country.utils.addFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -49,7 +50,13 @@ class ListCountryFragment : BaseFragment<ListCountryFragmentBinding, ListCountry
         viewModel.listCountryFilter.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
-        viewModel.getListCountry()
+        context?.let {
+            if (NetworkUtils.isNetworkAvailable(it)) {
+                viewModel.getListCountry()
+            } else {
+                viewModel.getListCountryLocal()
+            }
+        }
     }
 
     private fun onCountryClick(country: Country) {

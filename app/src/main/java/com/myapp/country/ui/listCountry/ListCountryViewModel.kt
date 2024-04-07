@@ -6,11 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.myapp.country.base.BaseViewModel
 import com.myapp.country.domain.entities.Country
+import com.myapp.country.domain.usecase.GetListCountryLocalUseCase
 import com.myapp.country.domain.usecase.GetListCountryUseCase
+import com.myapp.country.domain.usecase.SaveListCountryUseCase
 import com.myapp.country.utils.FieldType
 import kotlinx.coroutines.launch
 
-class ListCountryViewModel(private val getListCountryUseCase: GetListCountryUseCase) :
+class ListCountryViewModel(
+    private val getListCountryUseCase: GetListCountryUseCase,
+    private val saveListCountryUseCase: SaveListCountryUseCase,
+    private val getListCountryLocalUseCase: GetListCountryLocalUseCase
+) :
     BaseViewModel() {
 
     private val _listCountry = MutableLiveData<List<Country>>()
@@ -24,14 +30,24 @@ class ListCountryViewModel(private val getListCountryUseCase: GetListCountryUseC
         onSuccess = {
             Log.v("tag111", "data: $it")
             _listCountry.postValue(it)
+            saveListCountry(it)
         }
     )
+
+    fun getListCountryLocal() = viewModelScope.launch {
+        val listCountry = getListCountryLocalUseCase.call(Unit)
+        _listCountry.postValue(listCountry)
+    }
+
+    private fun saveListCountry(listCountry: List<Country>) = viewModelScope.launch {
+        saveListCountryUseCase.call(listCountry)
+    }
 
     fun filterByName(text: String) {
         viewModelScope.launch {
             val result =
                 listCountry.value?.filter {
-                    it.name.official?.contains(
+                    it.name?.official?.contains(
                         text,
                         ignoreCase = true
                     ) == true
