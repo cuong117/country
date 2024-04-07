@@ -1,3 +1,7 @@
 package com.myapp.country.domain.entities
 
-data class Country(val flags: Flag, val name: CountryName)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Country(val flags: Flag, val name: CountryName): Parcelable

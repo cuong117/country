@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">country</string>
+    <string name="name">Name</string>
+    <string name="official">Official: </string>
+    <string name="common">Common: </string>
+    <string name="other_name">Other Name</string>
 </resources>

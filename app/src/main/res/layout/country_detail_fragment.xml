@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/countryImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_240"
+        android:scaleType="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:paddingVertical="@dimen/dp_8"
+        android:text="@string/name"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countryImage" />
+
+    <TextView
+        android:id="@+id/officialTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:text="@string/official"
+        app:layout_constraintStart_toStartOf="@id/nameTitle"
+        app:layout_constraintTop_toBottomOf="@id/nameTitle" />
+
+    <TextView
+        android:id="@+id/officialName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        app:layout_constraintStart_toEndOf="@id/officialTitle"
+        app:layout_constraintTop_toTopOf="@id/officialTitle" />
+
+    <TextView
+        android:id="@+id/commonTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/common"
+        app:layout_constraintStart_toStartOf="@id/officialTitle"
+        app:layout_constraintTop_toBottomOf="@id/officialTitle" />
+
+    <TextView
+        android:id="@+id/commonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        app:layout_constraintStart_toEndOf="@id/commonTitle"
+        app:layout_constraintTop_toTopOf="@id/commonTitle" />
+
+    <TextView
+        android:id="@+id/otherName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dp_8"
+        android:text="@string/other_name"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/nameTitle"
+        app:layout_constraintTop_toBottomOf="@id/commonTitle" />
+
+    <ImageView
+        android:id="@+id/backImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_12"
+        android:background="@drawable/bg_circle"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/dp_8"
+        android:src="@drawable/ic_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listOtherName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otherName" />
+</androidx.constraintlayout.widget.ConstraintLayout>

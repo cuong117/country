@@ -15,7 +15,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             addFragment(
-                fragment = ListCountryFragment(),
+                fragment = ListCountryFragment.getInstance(),
                 addToBackStack = false,
                 container = viewBinding.container.id
             )

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id(libs.plugins.parcelize.get().pluginId)
 }
 
 android {
@@ -54,6 +55,7 @@ dependencies {
     implementation(libs.koin)
     implementation(libs.logging.interceptor)
     implementation(libs.converter.gson)
+    implementation(libs.glide)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
