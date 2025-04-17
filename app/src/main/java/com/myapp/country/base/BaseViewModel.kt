@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myapp.country.utils.DataResult
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel : ViewModel() {
@@ -13,7 +14,7 @@ abstract class BaseViewModel : ViewModel() {
         onSuccess: (T) -> Unit,
         onError: ((Exception) -> Unit)? = null
     ) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             when (val result = onRequest()) {
                 is DataResult.Success -> onSuccess(result.data)
                 is DataResult.Error -> onError?.invoke(result.exception)

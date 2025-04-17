@@ -2,7 +2,6 @@ package com.myapp.country.data.dataScource.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.myapp.country.data.dataScource.local.database.CountryDatabase.Companion.DB_VERSION
 import com.myapp.country.domain.entities.Country
@@ -12,7 +11,7 @@ import com.myapp.country.domain.entities.Country
     version = DB_VERSION,
     exportSchema = false
 )
-@TypeConverters(FlagConverter::class, CountryNameConverter::class)
+@TypeConverters(FlagConverter::class)
 abstract class CountryDatabase: RoomDatabase() {
 
     abstract fun getCountryDAO(): CountryDAO

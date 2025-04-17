@@ -1,6 +1,8 @@
 package com.myapp.country.data.di
 
+import android.util.Log
 import com.myapp.country.BuildConfig
+import com.myapp.country.convert.Secret
 import com.myapp.country.data.dataScource.remote.api.CountryService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,7 +22,7 @@ private fun provideOkHttpClient(): OkHttpClient {
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor.Level.BODY
         } else {
-            HttpLoggingInterceptor.Level.NONE
+            HttpLoggingInterceptor.Level.BODY
         }
     return OkHttpClient.Builder()
         .addInterceptor(httpLoggingInterceptor)
@@ -28,8 +30,9 @@ private fun provideOkHttpClient(): OkHttpClient {
 }
 
 private fun provideRetrofit(client: OkHttpClient): Retrofit {
+    Log.v("tag111", "provideRetrofit ${BuildConfig.BASE_URL}")
     return Retrofit.Builder()
-        .baseUrl(BuildConfig.BASE_URL)
+        .baseUrl(Secret.decrypt(BuildConfig.BASE_URL))
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

@@ -1,5 +1,6 @@
 package com.myapp.country.base
 
+import android.util.Log
 import com.myapp.country.utils.DataResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +17,7 @@ abstract class BaseRepository {
             val response = request()
             DataResult.Success(response)
         } catch (e: Exception) {
+            Log.v("tag111", "exece[ption: $e")
             return@withContext DataResult.Error(e)
         }
     }
